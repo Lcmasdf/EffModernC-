@@ -119,42 +119,33 @@ class IShitCallable_fuck: public IShitCallableBase<int> {
     }
     bool shit_call() {
         switch(status) {
-            // case 0:
-            //     sum = 0;
-            //     iter = nums.begin();
-            //     if (iter == nums.end()) {
-            //         return true;
-            //     } else {
-            //         sc = IShitCallable_shit(sum, *iter);
-            //         if (sc.shit_call()) {
-            //             sum  = sc.get();
-            //             status = 2;
-            //         } else {
-            //             status = 1;
-            //         }
-            //         return false;
-            //     }
-            // case 1:
-            //     if (sc.shit_call()) {
-            //         sum = sc.get();
-            //         status = 2;
-            //     } else {
-            //         status = 1;
-            //     }
-            //     return false;
-            // case 2:
-            //     ++iter;
-            //     if (iter == nums.end()) {
-            //         return true;
-            //     } else {
-            //         sc = IShitCallable_shit(*iter, sum);
-            //         if (sc.shit_call()) {
-            //             sum = sc.get();
-            //             status = 2;
-            //         } else {
-            //             status = 1;
-            //         }
-            //     }
+            case 0:
+                sum = 0;
+                iter = nums.begin();
+
+                while (iter != nums.end()) {
+                    sc = IShitCallable_shit(sum, *iter);
+                    if (!sc.shit_call()) {
+                        status = 1;
+                        return false;
+                    }
+                }
+                return true;
+            case 1:
+                if (!sc.shit_call()) {
+                    return false;
+                } else {
+                    sum = sc.get();
+                    while (++iter != nums.end()) {
+                        sc = IShitCallable_shit(sum, *iter);
+                        if (!sc.shit_call()) {
+                            status = 1;
+                            return false;
+                        }
+                        sum = sc.get();
+                    }
+                    return true;
+                }
         }
     }
 

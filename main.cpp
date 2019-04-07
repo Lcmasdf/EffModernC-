@@ -15,11 +15,11 @@
 
 #include "stdlib/chrono.hpp"
 #include "coroutine/vczh.hpp"
-#include "other_test/pointer_in_member_func.hpp"
+// #include "other_test/pointer_in_member_func.hpp"
 
 int main(int argc, char* argv[]) {
     //disp_currnt_time();
-    // test_continuation();
-    test_pointer_in_member_func();
+    test_continuation();
+    // test_pointer_in_member_func();
     return 0;
 }
