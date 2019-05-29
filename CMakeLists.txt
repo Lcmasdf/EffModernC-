@@ -3,4 +3,6 @@ PROJECT(opencvTest)
 
 SET(CMAKE_CXX_FLAGS "-std=c++11")
 
-ADD_EXECUTABLE(main main.cpp ${EFF_SRC})
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR})
+
+ADD_EXECUTABLE(main main.cpp ${EFF_SRC} move/move_test.cpp)
