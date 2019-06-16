@@ -111,6 +111,8 @@ class IShitCallable_shit: public IShitCallableBase<int> {
     int state;
 };
 
+
+//头脑风暴，将fuck展开，形成continuation
 class IShitCallable_fuck: public IShitCallableBase<int> {
     public:
     IShitCallable_fuck(const vector<int>& nums): nums(nums){};
@@ -147,6 +149,24 @@ class IShitCallable_fuck: public IShitCallableBase<int> {
                     return true;
                 }
         }
+    }
+
+    private:
+    vector<int> nums;
+    int sum;    
+    int status = 0;
+    decltype(nums.begin())iter;
+    IShitCallable_shit sc;
+};
+
+//使用更统一的方法构建fuck的continuation
+class IShitCallable_fuck_improve: public IShitCallableBase<int> {
+    public:
+    IShitCallable_fuck_improve(const vector<int>& nums): nums(nums){};
+    int get() {
+        return sum;
+    }
+    bool shit_call() {
     }
 
     private:
