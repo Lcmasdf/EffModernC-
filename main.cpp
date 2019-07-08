@@ -26,5 +26,7 @@ int main(int argc, char* argv[]) {
     int b = 100;
     non_template_forward(std::move(b));
 
+    std::unique_ptr<int>
+
     return 0;
 }

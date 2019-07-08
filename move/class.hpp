@@ -157,6 +157,7 @@ class move_A {
 void test();
 
 void non_template_forward(int&& a) {
+    //无论何时何地，参数是一个左值
     move_A ta;
     ta.move_overload_test(std::forward<int&>(a));
 }
