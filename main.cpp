@@ -7,6 +7,7 @@
 // #include <string.h>
 // #include <iomanip>
 #include "move/class.hpp"
+#include <memory>
 
 // #include "EffModernCpp/ModernC++.h"
 
@@ -22,6 +23,8 @@ int main(int argc, char* argv[]) {
     //disp_currnt_time();
     // test_continuation();
     // test_pointer_in_member_func();
-    test();
+    int b = 100;
+    non_template_forward(std::move(b));
+
     return 0;
 }

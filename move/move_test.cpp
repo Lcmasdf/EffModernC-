@@ -20,7 +20,5 @@ void test () {
     //t2.simulate_move(t1.get_move_z());
     t2.simulate_move(&t1.get_move_z());
 
-    std::forward(z1);
-
     t2.disp();
 }

@@ -6,6 +6,7 @@
 #include <string>
 #include <cstring>
 #include <type_traits>
+#include <utility>
 
 class move_z {
     private:
@@ -79,11 +80,6 @@ class move_z {
         capacity = xx->capacity;
         memcpy(pdata, xx->pdata, capacity);
     }
-
-    // void simulate_move(const move_z& xx) {
-    //     std::cout << "move_z simulate_move use const reference" << std::endl;
-    //     xx.disp();
-    // }
 };
 
 class move_A {
@@ -141,22 +137,36 @@ class move_A {
         pdata = rhs.pdata;
         rhs.pdata = nullptr;
         rhs.length = 0;
+        return *this;
     }
 
     void display() {
         std::cout << pdata << std::endl;
     }
 
+    void move_overload_test(int&& a) {
+        std::cout << "&& overload" << std::endl;
+    }
+
+    void move_overload_test(int& a) {
+        std::cout << "& overload" << std::endl;
+    }
+
 };
 
 void test();
 
+void non_template_forward(int&& a) {
+    move_A ta;
+    ta.move_overload_test(std::forward<int&>(a));
+}
+
 //std::move的实现
 
 template<typename T>
-typename remove_reference<T>::type&&
+typename std::remove_reference<T>::type&&
 my_move (T&& param) {
-    using ReturnType = typename remove_reference<T>::type&&;
+    using ReturnType = typename std::remove_reference<T>::type&&;
 
     return static_cast<ReturnType>(param);
 }
