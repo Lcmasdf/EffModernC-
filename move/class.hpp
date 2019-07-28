@@ -140,7 +140,7 @@ class move_A {
         return *this;
     }
 
-    void display() {
+     display() {
         std::cout << pdata << std::endl;
     }
 

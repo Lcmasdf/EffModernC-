@@ -1,4 +1,4 @@
- // #include <iostream>
+// #include <iostream>
 // #include <limits>
 // #include <cstdio>
 // #include <chrono>
@@ -8,6 +8,7 @@
 // #include <iomanip>
 #include "move/class.hpp"
 #include <memory>
+#include "concurrency/async_task.hpp"
 
 // #include "EffModernCpp/ModernC++.h"
 
@@ -23,10 +24,10 @@ int main(int argc, char* argv[]) {
     //disp_currnt_time();
     // test_continuation();
     // test_pointer_in_member_func();
-    int b = 100;
-    non_template_forward(std::move(b));
-
-    std::unique_ptr<int>
+    // int b = 100;
+    // non_template_forward(std::move(b));
+    // std::shared_ptr<bool> xxx;
+    test();
 
     return 0;
 }
