@@ -1,8 +1,7 @@
-#include <future>
+/*#include <thread>
 #include <iostream>
+#include <future>
 #include <windows.h>
-
-using namespace std;
 int sleep_and_add(int n) {
     int ret = 0;
     for (int i = 0 ; i < n; i++) {
@@ -20,4 +19,4 @@ void test() {
     func1.get();
     func2.get();
     return ;
-}
+}*/

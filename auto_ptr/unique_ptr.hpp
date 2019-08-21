@@ -5,6 +5,7 @@
 
 class a_deleter {
     public:
+    constexpr a_deleter() noexcept = default;
     void operator()(int *p) {
         if (p) {
             delete p;
@@ -26,7 +27,6 @@ class unique_ptr_int {
     unique_ptr_int() noexcept {
     }
 
-    // TODO:为什么nullptr不好使
     //nullptr 不是类型，需要使用decltype(nullptr)
     unique_ptr_int(decltype(nullptr)) noexcept {
     }
@@ -47,16 +47,31 @@ class unique_ptr_int {
       std::get<1>(impl) = std::move(p.get_deleter());
     }
 
+    //operator实现有误
+    // unique_ptr_int& operator=(unique_ptr_int&& p) noexcept {
+    //     std::get<0>(impl) = p.release();
+    //     std::get<1>(impl) = std::move(p.get_deleter());
+    // }
+
     unique_ptr_int& operator=(unique_ptr_int&& p) noexcept {
-        std::get<0>(impl) = p.release();
-        std::get<1>(impl) = std::move(p.get_deleter());
+        reset(p.release());
+        get_deleter() = std::move(p.get_deleter());
+        return *this;
     }
 
-    void reset(int* p) noexcept {
-        auto tmp = std::get<0>(impl);
-        get_deleter()(tmp);
+    unique_ptr_int& operator=(nullptr_t) noexcept {
+        reset();
+        return *this;
+    }
 
-        tmp = p;
+    //stl 的reset方法增加了默认值nullptr
+    //stl 的reset方法使用了swap
+    void reset(int* p = nullptr) noexcept {
+        std::swap(std::get<0>(impl), p);
+        //deleter 内部实现是assert not nullptr，所以要在这里判断
+        if (p != nullptr) {
+            get_deleter()(p);
+        }
     }
 
     //release并不会释管理的内存
@@ -66,8 +81,6 @@ class unique_ptr_int {
         std::get<0>(impl) = nullptr;
         return tmp;
     }
-
-    //TODO:swap?
 
     int* get() {
         return std::get<0>(impl);
@@ -81,7 +94,6 @@ class unique_ptr_int {
         return get() == nullptr? false: true;
     }
 
-    //TODO:deference
     int& operator*() {
         return *get();
     }
