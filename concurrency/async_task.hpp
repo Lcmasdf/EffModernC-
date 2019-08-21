@@ -1,4 +1,4 @@
-#include <future>
+/*#include <thread>
 #include <iostream>
 #include <unistd.h>
 
@@ -21,3 +21,4 @@ void test() {
     func2.get();
     return ;
 }
+*/

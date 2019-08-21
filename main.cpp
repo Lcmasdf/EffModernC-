@@ -20,6 +20,16 @@
 // #include "coroutine/vczh.hpp"
 // #include "other_test/pointer_in_member_func.hpp"
 
+class Empty {
+
+};
+
+class E2 {
+    Empty e1;
+    int b;
+    Empty e2[2];
+};
+
 int main(int argc, char* argv[]) {
     //disp_currnt_time();
     // test_continuation();
@@ -27,7 +37,10 @@ int main(int argc, char* argv[]) {
     // int b = 100;
     // non_template_forward(std::move(b));
     // std::shared_ptr<bool> xxx;
-    test();
+    // test();
+    std::cout << sizeof(E2) << std::endl;
+    E2 e2;
+    std::cout << sizeof(e2) << std::endl;
 
     return 0;
 }
