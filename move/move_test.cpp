@@ -17,7 +17,7 @@
 void test () {
     move_z t1("lichengmin");
     move_z t2("xxxxxx");
-    t2.simulate_move(&t1.get_move_z());
+    // t2.simulate_move(&t1.get_move_z());
 
     t2.disp();
 }

@@ -7,6 +7,7 @@
 #include <cstring>
 #include <type_traits>
 #include <utility>
+#include <queue>
 
 class move_z {
     private:
@@ -140,7 +141,7 @@ class move_A {
         return *this;
     }
 
-     display() {
+     void display() {
         std::cout << pdata << std::endl;
     }
 
@@ -160,6 +161,8 @@ void non_template_forward(int&& a) {
     //无论何时何地，参数是一个左值
     move_A ta;
     ta.move_overload_test(std::forward<int&>(a));
+    std::queue<int> que;
+    que.pop();
 }
 
 //std::move的实现
