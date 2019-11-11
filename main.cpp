@@ -2,7 +2,9 @@
 #include <chrono>
 #include <thread>
 #include <fstream>
-#include "auto_ptr/ptr&tree.hpp"
+#include <stdlib.h>
+#include "concurrency/exec.hpp"
+// #include "auto_ptr/ptr&tree.hpp"
 // #include <limits>
 // #include <cstdio>
 // #include <vector>
@@ -18,11 +20,15 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    link_list l;
-    l.insert_tail(1);
-    l.insert_tail(2);
-    l.insert_tail(3);
-    l.insert_tail(4);
-    l.delete_first(2);
+    // int *p = new int;
+    // free (p);
+    // link_list l;
+    // l.insert_tail(1);
+    // l.insert_tail(2);
+    // l.insert_tail(3);
+    // l.insert_tail(4);
+    // l.delete_first(2);
+    exec1();
+    cout << "xxx" << endl;
     return 0;
 }
