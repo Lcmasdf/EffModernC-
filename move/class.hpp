@@ -175,4 +175,9 @@ my_move (T&& param) {
     return static_cast<ReturnType>(param);
 }
 
+template<typename T>
+void xx_test(T&& param) {
+    std::cout << param.tmp << std::endl;
+}
+
 #endif

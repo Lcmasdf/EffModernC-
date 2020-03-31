@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 #include "exec.h"
 
@@ -44,4 +45,25 @@ void exec_8_2() {
         }
     }
     cout << buf.size() << endl;
+}
+
+void exec_8_3() {
+    vector<string> content;
+    ifstream fin("test.txt");
+    if (!fin.is_open()) {
+        cout << "open failed" << endl;
+        return;
+    }
+
+    string line, word;
+    while (getline(fin, line)) {
+        content.emplace_back(line);
+    }
+
+    for (auto& x : content) {
+        istringstream strm(x);
+        while (strm >> word) {
+            cout << word << endl;
+        }
+    }
 }

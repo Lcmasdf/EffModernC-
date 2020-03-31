@@ -2,7 +2,12 @@
 #include <chrono>
 #include <thread>
 #include <fstream>
-#include "auto_ptr/ptr&tree.hpp"
+// #include "std_IO/exec.h"
+// #include "move/class.hpp"
+#include <string>
+
+// #include "file_system/list.h"
+// #include "auto_ptr/ptr&tree.hpp"
 // #include <limits>
 // #include <cstdio>
 // #include <vector>
@@ -14,15 +19,15 @@
 // #include "concurrency/async_task.hpp"
 // #include "EffModernCpp/ModernC++.h"
 // #include "concurrency/thread.hpp"
+// #include "concurrency/atomic.hpp"
+#include "other_test/kestrel_frame_copy/frame.hpp"
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    link_list l;
-    l.insert_tail(1);
-    l.insert_tail(2);
-    l.insert_tail(3);
-    l.insert_tail(4);
-    l.delete_first(2);
+    object o1(1);
+    object o2 = create_object();
+    cout << o2.get_num() << endl;
+    object o3 = o2;
     return 0;
 }

@@ -7,4 +7,6 @@ std::istream& exec_8_1 (std::istream&);
 
 void exec_8_2();
 
+void exec_8_3();
+
 #endif
